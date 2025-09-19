@@ -5,6 +5,7 @@ console.log("fibbnoci series :");
 
 while (startOfRange <= endOfRange){
     series = series + startOfRange;
-    console.log(series);
+    console.log(startOfRange);
     startOfRange = series + startOfRange;
+    console.log(series);
 }
