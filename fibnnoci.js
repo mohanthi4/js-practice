@@ -1,3 +1,10 @@
 let startOfRange = 0;
 const endOfRange = 15;
-console.log("0 1 1 2 3 5 8 13");
+let series = 1;
+console.log("fibbnoci series :");
+
+while (startOfRange <= endOfRange){
+    series = series + startOfRange;
+    console.log(series);
+    startOfRange = series + startOfRange;
+}
