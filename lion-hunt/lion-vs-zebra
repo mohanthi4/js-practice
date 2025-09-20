@@ -3,7 +3,7 @@ const length = input1.length;
 let countLion = 0;
 let countZebra = 0;
 let killAt;
-console.log(length);
+// console.log(length);
 
 for(let initial = 0;initial < length;initial++){
     if(input1[initial] === "L"){
@@ -14,24 +14,24 @@ for(let initial = 0;initial < length;initial++){
     }
 }
 
-console.log(countLion);
-console.log(countZebra);
+// console.log(countLion);
+// console.log(countZebra);
 
 if((countLion === 0) || (countZebra === 0)){
     console.log(input1,"-1");
     
-}
-else{
+}else{
     for(let start = 0;start < length;start++){
         if(input1[start] === "L"){
             for(let begining = 0;begining < length;begining++){
                 if(input1[begining] === "Z"){
-                    console.log("L at ",start);
-                    console.log("Z at",begining);
+                    // console.log("L at ",start);
+                    // console.log("Z at",begining);
                     if(start < begining){
                         killAt = begining - start - 1;
+                    }else{
+                        killAt = start - begining - 1;
                     }
-                    
                 }
             }
         }
