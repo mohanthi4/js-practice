@@ -1,0 +1,6 @@
+console.log('"LZ" 0');
+console.log('"Z L" 1');
+console.log('"L     Z"  5');
+console.log('"L  L " -1');
+console.log('"Z  Z  Z" -1');
+console.log('"L ZL Z"  0');
