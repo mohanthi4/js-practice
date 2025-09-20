@@ -1,11 +1,13 @@
-const input1 = "    ";
+const input1 = "LZ";
 const length = input1.length;
-let countLion = 0;
-let countZebra = 0;
+const zero = 0;
+const noKill = -1;
+let countLion = zero;
+let countZebra = zero;
 let killAt;
 // console.log(length);
 
-for(let initial = 0;initial < length;initial++){
+for(let initial = zero;initial < length;initial++){
     if(input1[initial] === "L"){
         countLion = countLion + 1;
     }
@@ -17,14 +19,14 @@ for(let initial = 0;initial < length;initial++){
 // console.log(countLion);
 // console.log(countZebra);
 
-if((countLion === 0) || (countZebra === 0)){
-    console.log(input1,"-1");
+if((countLion === zero) || (countZebra === zero)){
+    console.log(input1,noKill);
     
 }else{
-    for(let start = 0;start < length;start++){
+    for(let start = zero;start < length;start++){
         let duplicateKillAt;
         if(input1[start] === "L"){
-            for(let begining = 0;begining < length;begining++){
+            for(let begining = zero;begining < length;begining++){
                 if(input1[begining] === "Z"){
                     // console.log("L at ",start);
                     // console.log("Z at",begining);
