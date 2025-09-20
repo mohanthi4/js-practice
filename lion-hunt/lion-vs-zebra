@@ -1,6 +1,13 @@
-console.log('"LZ" 0');
-console.log('"Z L" 1');
-console.log('"L     Z"  5');
-console.log('"L  L " -1');
-console.log('"Z  Z  Z" -1');
-console.log('"L ZL Z"  0');
+const input1 = '"LZ"';
+const input2 = '"Z L"';
+const input3 = '"L     Z"';
+const input4 = '"L  L"';
+const input5 = '"Z  Z  Z"';
+const input6 = '"L ZL Z"';
+
+console.log(input1,'        0');
+console.log(input2,'       1');
+console.log(input3,'   5');
+console.log(input4,'     -1');
+console.log(input5,'  -1');
+console.log(input6,'    0');
