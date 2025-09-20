@@ -1,4 +1,4 @@
-const input1 = "LZ";
+const input1 = "    ";
 const length = input1.length;
 let countLion = 0;
 let countZebra = 0;
@@ -22,6 +22,7 @@ if((countLion === 0) || (countZebra === 0)){
     
 }else{
     for(let start = 0;start < length;start++){
+        let duplicateKillAt;
         if(input1[start] === "L"){
             for(let begining = 0;begining < length;begining++){
                 if(input1[begining] === "Z"){
@@ -32,6 +33,12 @@ if((countLion === 0) || (countZebra === 0)){
                     }else{
                         killAt = start - begining - 1;
                     }
+
+                    if((duplicateKillAt < killAt) && (duplicateKillAt !== undefined)){
+                        killAt = duplicateKillAt;
+                    }
+                    duplicateKillAt = killAt;
+                    // console.log(killAt);
                 }
             }
         }
