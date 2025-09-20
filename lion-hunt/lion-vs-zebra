@@ -1,49 +1,56 @@
 const input1 = "LZ";
-const length = input1.length;
+const input2 = "Z L";
+const input3 = "L     Z";
+const input4 = "L  L";
+const input5 = "Z  Z  Z";
+const input6 = "L ZL Z";
+const input7 = "L  LZ";
+const input8 = "LZL  LZL";
+const input9 = "ZL  Z L";
 const zero = 0;
 const noKill = -1;
 let countLion = zero;
 let countZebra = zero;
 let killAt;
-// console.log(length);
+const length = input1.length;
 
-for(let initial = zero;initial < length;initial++){
-    if(input1[initial] === "L"){
-        countLion = countLion + 1;
-    }
-    if(input1[initial] === "Z"){
-        countZebra = countZebra + 1;
-    }
-}
-
-// console.log(countLion);
-// console.log(countZebra);
-
-if((countLion === zero) || (countZebra === zero)){
-    console.log(input1,noKill);
-    
-}else{
-    for(let start = zero;start < length;start++){
-        let duplicateKillAt;
-        if(input1[start] === "L"){
-            for(let begining = zero;begining < length;begining++){
-                if(input1[begining] === "Z"){
-                    // console.log("L at ",start);
-                    // console.log("Z at",begining);
-                    if(start < begining){
-                        killAt = begining - start - 1;
-                    }else{
-                        killAt = start - begining - 1;
-                    }
-
-                    if((duplicateKillAt < killAt) && (duplicateKillAt !== undefined)){
-                        killAt = duplicateKillAt;
-                    }
-                    duplicateKillAt = killAt;
-                    // console.log(killAt);
-                }
-            }
+    for(let initial = zero;initial < length;initial++){
+        if(input1[initial] === "L"){
+            countLion = countLion + 1;
+        }
+        if(input1[initial] === "Z"){
+            countZebra = countZebra + 1;
         }
     }
-    console.log(input1,killAt);
-}
+ 
+    if((countLion === zero) || (countZebra === zero)){
+        console.log(input1,noKill);
+    }else{
+        let xeroxDuplicate;
+
+        for(let start = zero;start < length;start++){
+            let duplicateKillAt;
+            if(input1[start] === "L"){
+
+                for(let begining = zero;begining < length;begining++){
+                    if(input1[begining] === "Z"){
+                        if(start < begining){
+                            killAt = begining - start - 1;
+                        }else{
+                            killAt = start - begining - 1;
+                        }
+    
+                        if((duplicateKillAt < killAt) && (duplicateKillAt !== undefined)){
+                            killAt = duplicateKillAt;
+                        }
+                        duplicateKillAt = killAt;
+                    }
+                }
+                if((xeroxDuplicate < killAt) && (xeroxDuplicate !== undefined)){
+                            killAt = xeroxDuplicate;
+                        }
+                xeroxDuplicate = killAt;
+            }
+        }
+        console.log(input1,killAt);
+    }
