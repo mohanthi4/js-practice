@@ -2,6 +2,7 @@ const input1 = "LZ";
 const length = input1.length;
 let countLion = 0;
 let countZebra = 0;
+let killAt;
 console.log(length);
 
 for(let initial = 0;initial < length;initial++){
@@ -27,9 +28,13 @@ else{
                 if(input1[begining] === "Z"){
                     console.log("L at ",start);
                     console.log("Z at",begining);
+                    if(start < begining){
+                        killAt = begining - start - 1;
+                    }
                     
                 }
             }
         }
     }
+    console.log(input1,killAt);
 }
