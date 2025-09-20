@@ -20,3 +20,16 @@ if((countLion === 0) || (countZebra === 0)){
     console.log(input1,"-1");
     
 }
+else{
+    for(let start = 0;start < length;start++){
+        if(input1[start] === "L"){
+            for(let begining = 0;begining < length;begining++){
+                if(input1[begining] === "Z"){
+                    console.log("L at ",start);
+                    console.log("Z at",begining);
+                    
+                }
+            }
+        }
+    }
+}
