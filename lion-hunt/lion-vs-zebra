@@ -7,18 +7,22 @@ const input6 = "L ZL Z";
 const input7 = "L  LZ";
 const input8 = "LZL  LZL";
 const input9 = "ZL  Z L";
+const input10 = "L  ZL";
+const input11 = "ZLLZZZL"
 const zero = 0;
 const noKill = -1;
+const lion = "L";
+const zebra = "Z";
 let countLion = zero;
 let countZebra = zero;
 let killAt;
 const length = input1.length;
 
     for(let initial = zero;initial < length;initial++){
-        if(input1[initial] === "L"){
+        if(input1[initial] === lion){
             countLion = countLion + 1;
         }
-        if(input1[initial] === "Z"){
+        if(input1[initial] === zebra){
             countZebra = countZebra + 1;
         }
     }
@@ -30,10 +34,10 @@ const length = input1.length;
 
         for(let start = zero;start < length;start++){
             let duplicateKillAt;
-            if(input1[start] === "L"){
+            if(input1[start] === lion){
 
                 for(let begining = zero;begining < length;begining++){
-                    if(input1[begining] === "Z"){
+                    if(input1[begining] === zebra){
                         if(start < begining){
                             killAt = begining - start - 1;
                         }else{
