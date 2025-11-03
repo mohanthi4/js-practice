@@ -1,5 +1,5 @@
 function encode(data) {
-  return "i0e";
+  return `i${data}e`;
 }
 
 function resultSymbol(expectedBencode, actual) {
@@ -17,3 +17,4 @@ function testBencode(data, expectedBencode) {
 }
 
 testBencode(0, "i0e");
+testBencode(123, "i123e"); 
