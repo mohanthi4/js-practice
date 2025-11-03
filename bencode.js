@@ -1,5 +1,10 @@
 function encode(data) {
-  return `i${data}e`;
+  if (typeof (data) === "number") {
+    return `i${data}e`;
+  }
+
+  let size = data.length;
+  return `${size}:${data}`
 }
 
 function resultSymbol(expectedBencode, actual) {
@@ -19,3 +24,4 @@ function testBencode(data, expectedBencode) {
 testBencode(0, "i0e");
 testBencode(123, "i123e");
 testBencode(-42, "i-42e");
+testBencode("", "0:");
