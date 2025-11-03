@@ -25,3 +25,4 @@ testBencode(0, "i0e");
 testBencode(123, "i123e");
 testBencode(-42, "i-42e");
 testBencode("", "0:");
+testBencode("hello", "5:hello");
