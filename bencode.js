@@ -17,4 +17,5 @@ function testBencode(data, expectedBencode) {
 }
 
 testBencode(0, "i0e");
-testBencode(123, "i123e"); 
+testBencode(123, "i123e");
+testBencode(-42, "i-42e");
