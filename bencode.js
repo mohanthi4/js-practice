@@ -3,8 +3,7 @@ function encode(data) {
     return `i${data}e`;
   }
 
-  let size = data.length;
-  return `${size}:${data}`
+  return `${data.length}:${data}`;
 }
 
 function resultSymbol(expectedBencode, actual) {
@@ -26,3 +25,5 @@ testBencode(123, "i123e");
 testBencode(-42, "i-42e");
 testBencode("", "0:");
 testBencode("hello", "5:hello");
+testBencode("hello world", "11:hello world");
+testBencode("special!@#$chars", "16:special!@#$chars");
