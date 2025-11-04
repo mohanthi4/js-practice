@@ -31,9 +31,20 @@ function sort(data) {
   return sortedData;
 }
 
-const data = [50, 0, 25, 25];
-const averageValue = average(data);
-console.log(averageValue);
-const sortedData = sort(data);
-console.log(sortedData);
+function middleElement(data) {
+  return data[Math.floor(data.length / 2)];
+}
+
+function median(data) {
+  return middleElement(sort(data));
+}
+
+function main() {
+  const data = [50, 0, 25, 25];
+  const medianValue = median(data);
+  console.log(medianValue);
+
+}
+
+main();
 
