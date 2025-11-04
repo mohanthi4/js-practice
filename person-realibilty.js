@@ -1,17 +1,31 @@
-let NUMBER_OF_TIMES = 0;
-
-function sum(data) {
+function sum(data, power = 1) {
   let sumOfData = 0;
 
   for (let index = 0; index < data.length; index++) {
-    sumOfData = sumOfData + data[index];
+    sumOfData = sumOfData + Math.pow(data[index], power);
   }
 
   return sumOfData;
 }
 
-function average(data) {
-  return sum(data) / data.length;
+function average(data, power = 1) {
+  return sum(data, power) / data.length;
+}
+
+function deviationElements(data) {
+  let elements = [];
+  const averageValue = average(data);
+
+  for (let index = 0; index < data.length; index++) {
+    elements.push(data[index] - averageValue);
+  }
+
+  return elements;
+}
+
+function standardDeviation(data) {
+  const elements = deviationElements(data);
+  return Math.sqrt(average(elements, 2));
 }
 
 function sort(data) {
@@ -19,7 +33,6 @@ function sort(data) {
 
   for (let i = 0; i < data.length; i++) {
     for (let j = i + 1; j < data.length; j++) {
-      NUMBER_OF_TIMES++;
       if (sortedData[i] > sortedData[j]) {
         const duplicate = sortedData[i];
         sortedData[i] = sortedData[j];
@@ -40,11 +53,11 @@ function median(data) {
 }
 
 function main() {
-  const data = [50, 0, 25, 25];
+  const data = [0, 0, 0, 100];
   const medianValue = median(data);
-  console.log(medianValue);
+  const standardDeviationValue = standardDeviation(data);
+  console.log(standardDeviationValue);
 
 }
 
 main();
-
