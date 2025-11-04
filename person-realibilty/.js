@@ -31,7 +31,6 @@ function sort(data) {
   return sortedData;
 }
 
-
 const data = [50, 0, 25, 25];
 const averageValue = average(data);
 console.log(averageValue);
