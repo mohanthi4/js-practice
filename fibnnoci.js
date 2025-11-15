@@ -1,11 +1,17 @@
-let startOfRange = 0;
-const endOfRange = 15;
-let series = 1;
-console.log("fibbnoci series :");
+const series = (start, end) => {
+  let element = 1;
+  const fibbnociSeries = [];
 
-while (startOfRange <= endOfRange){
-    series = series + startOfRange;
-    console.log(startOfRange);
-    startOfRange = series + startOfRange;
-    console.log(series);
-}
+  while (start <= end) {
+    element = element + start;
+    fibbnociSeries.push(start);
+    start = element + start;
+    fibbnociSeries.push(element);
+  }
+  return fibbnociSeries;
+};
+
+const rangeOfFibbnoci = (startOfRange, endOfRange) => {
+  console.log("fibbnoci series :");
+  return series (startOfRange,endOfRange);
+};
