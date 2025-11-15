@@ -1,8 +1,12 @@
-let value = 0;
-const limit = 10;
-while (value <= limit){
-    const isOdd = (value % 2 );
-    const justifiedValue =  isOdd ?  "is Odd" : "is Even";  
-    console.log(value,justifiedValue);
-    value = value + 1 ;
-}  
+const isOdd = (element) => element % 2 !== 0;
+
+const justifiedValue = (element) => isOdd(element) ?  "is Odd" : "is Even"; 
+
+const limitedEvenOdd = (start,limit) =>{
+  const validData = {}
+  while (start <= limit) {
+    validData[start] = justifiedValue(start);
+    start = start + 1 ;
+  } 
+  return validData;
+}
