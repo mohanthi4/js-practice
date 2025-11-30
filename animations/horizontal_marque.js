@@ -39,7 +39,6 @@ const firstString = setInterval(() => {
   console.log(drawOnScreen(screen, 0, x1, str.charAt(i)));
   i = (x1 >= 19) ? str.length - 1 : i - 1;
   x1 = (x1 >= 19) ? 0 : x1 + 1;
-
 }, 200);
 
 let x2 = 0;
