@@ -1,0 +1,6 @@
+hello 23 1.4
+apple 34 1.8
+banana 45 5.4
+mango 90 8.7
+papaya 15 5.7
+apple 90 5.4

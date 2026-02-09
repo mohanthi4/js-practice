@@ -1,0 +1,7 @@
+const drink = (juiceWanted) => {
+  const availableJuice = ["amla","mosambi","grape","butter fruit"];
+  if (availableJuice.includes(juiceWanted)) {
+    return `✅ ${juiceWanted} is ordered`;
+  }
+  return `❗️${juiceWanted} is unavailable`;
+}

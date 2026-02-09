@@ -29,13 +29,22 @@ const drawCircle = (screen, x, y, character) => {
   return screen.map((e) => e.join("")).join("\n");
 };
 
-let radius = 8;
+let radius = 6;
 let angle = 1;
-  
+
 setInterval(() => {
   console.clear();
   // screenClear(screen);
   const [x, y] = points(radius, angle++);
   console.log(drawCircle(screen, x, y, "*"));
+}, 10)
+
+// let angle2 = 1;
+// let radius2 = 4;
+// setInterval(() => {
+//   console.clear();
+//   // screenClear(screen);
+//   const [x, y] = points(radius2, angle2++);
+//   console.log(drawCircle(screen, x, y, "*"));
   
-},10)
+// },10)

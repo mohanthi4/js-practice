@@ -1,0 +1,95 @@
+function reverseString(string) {
+  const index = 0;
+  const reverse = "";
+
+  if (string.length === 0) {
+    return reverse;
+  }
+
+  return reverseWord(string, index, reverse);
+}
+
+function reverseWord(string, index, reverse) {
+  let count = 0;
+
+  if (index <= string.length - 1) {
+    const startIndexRange = isStart(string, index);
+
+    if (reverse !== "") {
+      count = 1;
+    }
+
+    let word = "";
+    word = oneWord(startIndexRange, string, index, word, count);
+    reverse = reverse + word;
+
+    return reverseWord(string, startIndexRange + 2, reverse);
+  }
+
+  return reverse;
+} 
+
+function oneWord(startIndexRange, string, index, word, count) { 
+  if (count !== 0) {
+    word = word + " ";
+  }
+
+  if (startIndexRange >= index) {
+    let extraCount = 0;
+    word = word + string[startIndexRange];
+    
+    word = oneWord(startIndexRange - 1, string, index, word,extraCount);
+  }
+
+  return word ;
+}
+
+function isStart(string, index) {
+  if (index === string.length - 1) {
+    return index;
+  }
+
+  if(string[index] === " ") {
+    return index - 1;
+  }
+
+  return isStart(string, index + 1);
+}
+
+
+function resultMessage(gist, string, expected, actual) {
+  const symbol = expected === actual ? "✅" : "❌";
+  const details = description(gist);
+
+  if (symbol === "❌") {
+    const values = outputFragment(string, expected, actual);
+    return symbol + details + values;
+  }
+
+  return symbol + details;
+}
+
+function description(gist) {
+  return gist;
+}
+
+function outputFragment(string, expected, actual) {
+  return " '" + string + "' expected : " + expected + " actual : '" + actual + "'";
+}
+
+function testReverseString(gist, string, expected) {
+  const actual = reverseString(string);
+  const message = resultMessage(gist, string, expected, actual);
+
+  console.log(message);
+}
+
+function allTestCases() {
+  testReverseString("empty string", "", "");
+  testReverseString("reverse one word", "hello", "olleh");
+  testReverseString("two strings", "hello world", "olleh dlrow");
+  testReverseString("reverse three words", "JavaScript is fun", "tpircSavaJ si nuf");
+  testReverseString("reverse single 3 letters", "a b c", "a b c");
+}
+
+allTestCases();

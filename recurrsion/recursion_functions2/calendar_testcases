@@ -1,0 +1,18 @@
+| Description | Input | Output |
+| --- | --- | --- |
+| Simple increment of a normal day | 15-03-2021 | 16-03-2021 |
+| Increment date and month in february of non leap year| 28-02-2023 | 01-03-2023 |
+| February month of leap year | 29-02-2024 | 01-03-2024 |
+| 30 days in a month increments to another month| 30-04-1998 | 01-05-1998 |
+| 31days in a month increments to another month | 31-01-2021 | 01-02-2021 |
+| Convert to new year by one vaue in year increments | 31-12-1884 | 01-01-1885 |
+| Convert to new year by two values in a year increments| 31-12-1249 | 01-01-1250 |
+| Three values in a year changes | 31-12-1699 | 01-01-1700 |
+| Four values in a year changes | 31-12-1999 | 01-01-2000 |
+| Convering to first new year| 31-12-0001 | 01-01-0002 |
+| Date is zero| 00-01-1994 | "Invalid Date" |
+| Date is more than 31days | 32-01-1111 | "Invalid Date" |
+| Month exceeds more than 12| 01-13-2025 | "Invalid Date" |
+| Month is zero | 01-00-1445 | "Invalid Date" |
+| Year is in zeroes| 01-01-0000 | "Invalid Date" |
+| Year is exceeding more than four values| 31-12-9999 | "Invalid Date" |

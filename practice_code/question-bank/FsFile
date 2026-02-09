@@ -1,0 +1,2 @@
+1) It is not guaranteed that the full buffer will be read in a single call.
+
