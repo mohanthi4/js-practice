@@ -1,5 +1,3 @@
-import { equal } from "jsr:@std/assert";
-
 const display = (x, y, color) =>
   console.log(`\x1B[${y};${x}H\x1B[${color}m \x1B[0m`);
 
@@ -11,30 +9,33 @@ const checkWinPosition = (x, y) => {
     return 2;
   }
   if (isEnd(x, y)) {
-    return 1;
+    return 3;
   }
+  return 0;
 };
 
-const gameRuns = async (reader, playerMoves) => {
+const gameOver = () => {
+  console.log(`\x1B[2J \x1B[5;10H wins 🏆`);
+};
+
+const gameRuns = async (reader, count = 0) => {
   const { value, done } = await reader.read();
-  let count = 0;
   if (done) {
     return;
   }
-  const [e, x, y] = value.slice(3, 6);
-  const [event, positionX, positionY] = [e - 32, x - 32, y - 32];
-  if (event === 0) {
-    playerMoves.push([positionX, positionY]);
-  }
+  const [x, y] = value.slice(4, 6);
+  const [positionX, positionY] = [x - 32, y - 32];
   display(positionX, positionY, "43");
-  // count = count + checkWinPosition(positionX, positionY);
-  if (count === 3) {
+  count = count + checkWinPosition(positionX, positionY);
+  if (count === 5) {
+    gameOver();
     return;
   }
-  gameRuns(reader, playerMoves);
+  gameRuns(reader, count);
 };
 
-const mouseActivation = async () => {
+const activateMouse = async () => {
+  Deno.stdin.setRaw(true, { cbreak: true });
   const writer = Deno.stdout.writable.getWriter();
   const mouseEnable = "\x1b[?1002h";
   const encoder = new TextEncoder();
@@ -42,20 +43,17 @@ const mouseActivation = async () => {
 };
 
 const gameStarts = () => {
-  const playerMoves = [];
   const reader = Deno.stdin.readable.getReader();
-  gameRuns(reader, playerMoves);
+  display(startPosition.x, startPosition.y, "42");
+  display(endPosition.x, endPosition.y, "42");
+  gameRuns(reader);
 };
 
 const startPosition = { x: 5, y: 10 };
 const endPosition = { x: 10, y: 20 };
 
 const main = () => {
-  Deno.stdin.setRaw(true, { cbreak: true });
-
-  mouseActivation();
-  display(startPosition.x, startPosition.y, "42");
-  display(endPosition.x, endPosition.y, "42");
+  activateMouse();
   gameStarts();
 };
 
