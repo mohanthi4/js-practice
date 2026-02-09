@@ -1,7 +1,8 @@
 import { equal } from "jsr:@std/assert";
 
-const decoder = new TextDecoder();
-const encoder = new TextEncoder();
+const display = (x, y, color) =>
+  console.log(`\x1B[${y};${x}H\x1B[${color}m \x1B[0m`);
+
 const gameRuns = async (reader, playerMoves) => {
   const { value, done } = await reader.read();
   if (done) {
@@ -12,19 +13,27 @@ const gameRuns = async (reader, playerMoves) => {
   if (event === 0) {
     playerMoves.push([positionX, positionY]);
   }
-  console.log(`\x1B[${positionY};${positionX}H\x1B[43m \x1B[0m`);
+  display(positionX, positionY, "43");
   gameRuns(reader, playerMoves);
 };
 
-const main = async () => {
-  Deno.stdin.setRaw(true, { cbreak: true });
-  const reader = Deno.stdin.readable.getReader();
+const activateMouse = async () => {
   const writer = Deno.stdout.writable.getWriter();
   const mouseEnable = "\x1b[?1002h";
+  const encoder = new TextEncoder();
   await writer.write(encoder.encode(mouseEnable));
-  console.log(`\x1B[5;10H\x1B[42m \x1B[0m`, `\x1B[10;20H\x1B[42m \x1B[0m`);
-  const winPositions = [[5, 10], [10, 20]];
+};
+
+const main = () => {
+  Deno.stdin.setRaw(true, { cbreak: true });
+
+  const startPosition = { x: 5, y: 10 };
+  const endPosition = { x: 10, y: 20 };
+  activateMouse();
+  display(startPosition.x, startPosition.y, "42");
+  display(endPosition.x, endPosition.y, "42");
   const playerMoves = [];
+  const reader = Deno.stdin.readable.getReader();
   gameRuns(reader, playerMoves);
 };
 
